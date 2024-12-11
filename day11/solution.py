@@ -39,16 +39,15 @@ def blinklen(s, n, mem):
     if (s, n) in mem:
         return mem[(s, n)]
     # otherwise do work
-    blen = 0
     if s == '0':
-        blen += blinklen('1', n-1, mem)
+        blen = blinklen('1', n-1, mem)
     elif len(s) % 2 == 0:
         h = len(s) // 2
         l = str(int(s[:h]))
         r = str(int(s[h:]))
-        blen += blinklen(l, n-1, mem) + blinklen(r, n-1, mem)
+        blen = blinklen(l, n-1, mem) + blinklen(r, n-1, mem)
     else:
-        blen += blinklen(str(int(s)*2024), n-1, mem)
+        blen = blinklen(str(int(s)*2024), n-1, mem)
     mem.setdefault((s, n), blen)
     return blen
 
