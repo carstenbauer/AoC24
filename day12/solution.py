@@ -46,6 +46,8 @@ print("Part I:", total)
 
 ## Part II
 
+# reduce all perimeter components that form straight lines
+# to a single perimeter component representing this line
 total = 0
 for nodes in crr.values():
     area = len(nodes)
@@ -55,7 +57,7 @@ for nodes in crr.values():
             nr, nc = r+dr, c+dc
             if nr < 0 or nr >= nrows or nc < 0 or nc >= ncols or (nr,nc) not in nodes:
                 perim.add(((r,c), (nr,nc)))
-    perim2 = set()
+    sides = set()
     for p1, p2 in perim:
         doadd = True
         for dr, dc in ((1,0), (0,1)):
@@ -64,7 +66,7 @@ for nodes in crr.values():
             if (np1, np2) in perim:
                 doadd = False
         if doadd:
-            perim2.add((p1,p2))
-    total += len(perim2) * area
+            sides.add((p1,p2))
+    total += len(sides) * area
 
 print("Part II:", total)
