@@ -6,7 +6,7 @@ total2 = 0
 def solve(ax, ay, bx, by, px, py):
     ca = (px * by - py * bx) / (ax * by - ay * bx)
     cb = (px - ax * ca) / bx
-    if ca % 1 == cb % 1 == 0: # require integers
+    if ca % 1 == 0 and cb % 1 == 0: # require integers
         return int(3 * ca + cb)
     else:
         return 0
